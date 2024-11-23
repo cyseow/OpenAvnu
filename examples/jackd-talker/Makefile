@@ -6,14 +6,14 @@ MRPCLIENT_DIR = ../common
 MRPTALKER_OBJS = talker_mrp_client.o
 MRPTALKER_TARGETS = $(addprefix $(MRPCLIENT_DIR)/,$(MRPTALKER_OBJS))
 
-IGBLIB_DIR = ../../lib/igb
+IGBLIB_DIR = ../../lib/igb_avb/lib
 DAEMONS_DIR = ../../daemons
 
 CC ?= gcc
 OPT = -O2 -g
 WARN = -Wall -Wextra -Wno-parentheses
 CFLAGS = $(OPT) $(WARN) -std=gnu99
-CPPFLAGS = -I$(IGBLIB_DIR) -I$(DAEMONS_DIR)/mrpd -I$(MRPCLIENT_DIR) -I$(AVBLIB_DIR) -I$(DAEMONS_DIR)/common
+CPPFLAGS = -I$(IGBLIB_DIR) -I$(DAEMONS_DIR)/mrpd -I$(MRPCLIENT_DIR) -I$(AVBLIB_DIR) -I$(DAEMONS_DIR)/common -DAVB_FEATURE_ATL=0
 LDLIBS = -ligb -lpci -lrt -pthread -ljack
 LDFLAGS = -L$(IGBLIB_DIR)
 
